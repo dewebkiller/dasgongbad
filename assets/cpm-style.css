@@ -1,0 +1,520 @@
+/********************************************************************************************************/
+
+
+/********************************************************************************************************/
+
+
+/*-----------------*\
+	#BACK TO TOP
+\*-----------------*/
+
+#back-to-top {
+    background: transparent;
+    bottom: 30px;
+    color: #514F50;
+    cursor: pointer;
+    font-size: 30px;
+    height: 45px;
+    opacity: 1;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: all .35s ease;
+    -moz-transition: all .35s ease;
+    -ms-transition: all .35s ease;
+    -o-transition: all .35s ease;
+    transition: all .35s ease;
+    width: 45px;
+    z-index: 3;
+    position: absolute;
+    right: 70px;
+    bottom: 100px;
+}
+
+footer.site-footer {
+    position: relative;
+}
+
+#back-to-top i {
+    line-height: 43px;
+}
+
+#back-to-top.show {
+    opacity: 1;
+}
+
+.loader {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+}
+
+.cpm_return {
+    position: relative;
+}
+
+.cpm_return .loader img {
+    background: rgba(0, 0, 0, 0.7);
+    height: 100px;
+}
+
+
+/********************************************************************************************************/
+
+.widget-area .tagcloud .tag-cloud-link {
+    color: #000000;
+}
+
+
+/********************************************************************************************************/
+
+
+/********************************************************************************************************/
+
+
+/*-----------------*\
+	#LANGUAGE MENU
+\*-----------------*/
+
+.header {
+    transition: top 0.5s ease-in-out 0.5s !important;
+}
+
+.secondary-menu {
+    float: right;
+    position: relative;
+    /* padding: 5px 0px 5px 15px; */
+    margin: auto;
+    margin-right: 0;
+}
+
+.secondary-menu .menu {
+    display: block;
+}
+
+.secondary-menu .menu li {
+    display: inline-block;
+    padding: 5px 0 5px 15px;
+    text-align: center;
+    position: relative;
+    top: 10px;
+}
+
+#right-menu {
+    margin-left: 15px !important;
+}
+
+body.sidr-open .header .hamburger-menu:before {
+    transform: rotate(45deg);
+    top: 0px;
+    transition: none;
+}
+
+body.sidr-open .header .hamburger-menu:after {
+    transform: rotate(135deg);
+    top: 0px;
+    transition: none;
+}
+
+body.sidr-open .header .hamburger-menu {
+    background: none;
+    transition: none;
+}
+
+.secondary-menu .menu li.lang-item-en a:before {
+    content: 'En';
+    color: #000000;
+    font-size: 16px;
+    left: -10px;
+    position: relative;
+}
+
+.secondary-menu .menu li.lang-item-de a:before {
+    content: 'De';
+    color: #000000;
+    font-size: 16px;
+    /* text-align: right; */
+}
+
+.secondary-menu .menu li.lang-item-en a,
+.secondary-menu .menu li.lang-item-de a {
+    color: transparent;
+    font-size: 0;
+}
+
+.secondary-menu .menu li.lang-item-en a:after {
+    content: '';
+    border-left: 1px solid #000000;
+    font-size: 16px;
+}
+
+.sidr ul li {
+    padding: 6px 100px !important;
+    text-align: left;
+}
+
+select#get_gift_id {
+    padding: 9px 15px;
+}
+
+.gift-card-content-editor.step-content input,
+.gift-card-content-editor.step-content textarea {
+    text-transform: none !important;
+    font-size: 13px !important;
+    padding: 10px 23px !important;
+    text-align: left;
+}
+
+.ywgc-message {
+    margin-top: 30px;
+}
+
+.ywgc-recipient-name {
+    margin-bottom: 20px;
+}
+
+.gifts-type {
+    margin-bottom: 40px;
+}
+
+.gift_card_template_button.variations_button .quantity {
+    float: left;
+    margin-right: 20px;
+}
+
+.gift_card_template_button.variations_button .gift_card_add_to_cart_button {
+    background: #000;
+    border-color: #000;
+    color: #fff;
+    padding: 14px 18px;
+    font-size: 16px;
+}
+
+.gift_card_template_button.variations_button .quantity input {
+    max-width: 80px;
+    padding: 10px 10px;
+}
+
+.gift_card_template_button.variations_button {
+    margin-top: 30px;
+}
+
+#boxzilla-8165:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 15%);
+}
+
+.yel-popup-template {
+    position: relative;
+}
+
+div#yeloni-email-form div {
+    z-index: 999;
+    position: relative;
+}
+
+.yel-popup-main-wrapper {
+    /*     opacity: 0 !important; */
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+div#popmake-11188 {
+    padding: 0;
+}
+
+button.pum-close.popmake-close {
+    display: none;
+}
+
+.single.single-tribe_events .yel-popup-main-wrapper.show {
+    opacity: 1 !important;
+}
+
+div#yeloni-email-form {
+    color: #fff;
+    z-index: 999;
+    position: relative;
+    font-size: 21px !important;
+}
+
+span.boxzilla-close-icon {
+    cursor: pointer;
+    z-index: 99999;
+    color: #fff;
+}
+
+.section-content.section.custom-gift-page {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.ywgc-recipient-name label,
+.ywgc-recipient-email label,
+.ywgc-sender-name label {
+    display: block;
+}
+
+.gift-card-content-editor.step-content input,
+.gift-card-content-editor.step-content textarea {
+    width: 100%;
+}
+
+select#get_gift_id {
+    width: 100%;
+}
+
+.gift_card_template_button.variations_button .gift_card_add_to_cart_button {
+    cursor: pointer;
+}
+
+select#get_gift_id {
+    margin-bottom: 20px;
+}
+
+.gift-card-content-editor.step-content {
+    margin-top: 40px;
+}
+
+.cpm_price {
+    color: green;
+}
+
+p.cpm_price_no {
+    display: inline-block;
+    margin-left: 7px;
+}
+
+.yel-heading-1 {
+    color: #ffffffd4 !important;
+}
+
+.yel-subheading-1 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.ywgc_apply_gift_card_button {
+    background: #000 !important;
+}
+
+.ywgc_apply_gift_card_button:hover {
+    background: #000 !important;
+}
+
+
+/*.yel-popup-main-wrapper {
+    visibility: visible !important;
+    opacity: 1 !important;
+}*/
+
+#popmake-11204 {
+    padding: 0;
+}
+
+.yel-popup-main-wrapper>p,
+.yel-popup-template>p {
+    margin: 0;
+}
+
+#yel-popup-content #yeloni-email-form {
+    padding-top: 40px !important;
+}
+
+div#yel-popup-content {
+    display: flex;
+    background: url(https://dasgongbad.com/wp-content/uploads/2022/08/background-min.jpg);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: end;
+    padding: 70px 0;
+}
+
+#yel-popup-content .yel-heading-1 {
+    width: 100% !important;
+}
+
+#yel-popup-content figure,
+#yeloni-email-form {
+    width: 50%;
+    margin: 0;
+}
+
+.yel-ep-form-wrapper .wpcf7-form {
+    width: 100%;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.yel-subheading-1 {
+    text-align: right;
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-left: auto;
+}
+
+#yel-popup-content .yel-email-popup-5 .yel-heading-1 {
+    width: 100% !important;
+}
+
+#yeloni-email-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+
+/* .yel-ep-form-wrapper p {
+    margin-bottom: 0;
+} */
+
+.yel-ep-form-wrapper span.wpcf7-spinner {
+    display: none;
+}
+
+div#boxzilla-8165 {
+    padding: 0 !important;
+}
+
+.yel-email-popup-5 .yel-subheading-1 {
+    text-align: left;
+}
+
+.yel-popup-main-wrapper input.wpcf7-form-control.wpcf7-submit {
+    background: rgb(176, 148, 49);
+    font-family: "Open Sans", Sans-serif !important;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 !important;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.single.showpopup #boxzilla-8165 .yel-popup-main-wrapper {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.yel-popup-main-wrapper .wpcf7 .ajax-loader {
+    display: none;
+}
+
+.yel-popup-main-wrapper span.wpcf7-not-valid-tip {
+    font-size: 11px;
+}
+
+.yel-popup-main-wrapper .yel-heading-1 {
+    font-weight: normal !important;
+}
+
+.yel-popup-main-wrapper .wpcf7-response-output {
+    font-size: 11px;
+}
+
+.yel-popup-main-wrapper {
+    background-image: none !important;
+}
+
+.yel-popup-main-wrapper br {
+    display: none;
+}
+
+#boxzilla-8165 {
+    background-image: url(https://dasgongbad.com/wp-content/uploads/2021/12/final-1-min.png);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden !important;
+    height: 450px !important;
+    max-height: none !important;
+}
+
+#boxzilla-8165,
+div#boxzilla-overlay-8165 {
+    visibility: hidden !important;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    opacity: 0;
+    display: block !important;
+}
+
+.showpopup #boxzilla-8165,
+.showpopup div#boxzilla-overlay-8165 {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.yel-popup-main-wrapper input.wpcf7-form-control.wpcf7-submit {
+    cursor: pointer;
+}
+
+.single-tribe_events #boxzilla-8165 {
+    margin-top: 250px;
+}
+
+
+.pum-content .yel-email-popup-5 .yel-subheading-1:after ,
+.pum-content .yel-email-popup-5 .yel-subheading-1 {
+/*     font-size: 12px !important; */
+  
+}
+
+#boxzilla-8165 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.pum-theme-11179,
+.pum-theme-default-theme {
+    background-color: rgb(0 0 0 / 15%) !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .single_event_inner_wrap {
+        display: flex;
+        flex-direction: column;
+    }
+    .single-tribe_events .tribe-common.tribe-tickets {
+        order: 1;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .tribe-events-single-event-description.tribe-events-content {
+        order: 2;
+    }
+    .single-tribe_events .tribe-events-cal-links {
+        order: 3;
+    }
+    #yeloni-email-form {
+        justify-content: center;
+        width: 100%;
+    }
+    div#yeloni-email-form div {
+        text-align: center;
+    }
+    html.pum-open.pum-open-overlay.pum-open-scrollable body>[aria-hidden] {
+        padding-right: 0px !important;
+    }
+	div#yel-popup-content {
+		background: url(https://dasgongbad.com/wp-content/uploads/2022/09/poup-img-mobile.jpeg);
+   		background-position: left center;
+    	background-repeat: no-repeat;
+    	background-size: cover;
+		position:relative;
+	}
+	div#yel-popup-content:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #00000055;
+}
+}
