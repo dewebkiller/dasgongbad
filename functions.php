@@ -279,6 +279,7 @@ function das_gongbad_scripts()
 	wp_enqueue_style('Armata-google-fonts', 'https://fonts.googleapis.com/css?family=Armata&display=swap', false);
 	wp_enqueue_style('Opensans-google-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i&display=swap', false);
 	wp_enqueue_style('das-gongbad-cpm-style', get_template_directory_uri() . '/assets/cpm-style.css');
+
 	wp_enqueue_style('das-gongbad-style', get_stylesheet_uri());
 	wp_enqueue_script('das-gongbad-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true);
 
@@ -385,223 +386,217 @@ function upcoming_events_functions($atts)
 		<div class="container">
 			<div class="row"><?php
 
-								// Loop through the events, displaying the title and content for each
-								foreach ($events as $event_single) {
+												// Loop through the events, displaying the title and content for each
+												foreach ($events as $event_single) {
 
 
-									setup_postdata($event_single);
+													setup_postdata($event_single);
 
-									$event_id = $event_single->ID;
-									$event_title = $event_single->post_title;
-									$event_content = $event_single->post_content;
-									// $event_link = $event_single->guid;
-									$event_link = get_permalink($event_id);
-									$event_slug_post = get_post($event_id);
-									$event_slug = $event_slug_post->post_name;
-									$event_start_date = tribe_get_start_date($event_id, true, 'F j, G:i');
-									$event_end_date = tribe_get_end_date($event_id, true, 'G:i');
-									// $event_start_date_german = explode(" ",$event_start_date);
-									// $event_start_date_german = change_date_to_german($event_start_date_german);
-									// $event_start_date_german = implode(" ",$event_start_date_german);
-									$event_location_address = tribe_get_full_address($event_single);
+													$event_id = $event_single->ID;
+													$event_title = $event_single->post_title;
+													$event_content = $event_single->post_content;
+													// $event_link = $event_single->guid;
+													$event_link = get_permalink($event_id);
+													$event_slug_post = get_post($event_id);
+													$event_slug = $event_slug_post->post_name;
+													$event_start_date = tribe_get_start_date($event_id, true, 'F j');
+													$event_start_datetime = tribe_get_start_date($event_id, true, ' G:i');
+													$event_end_date = tribe_get_end_date($event_id, true, 'G:i');
+													// $event_start_date_german = explode(" ",$event_start_date);
+													// $event_start_date_german = change_date_to_german($event_start_date_german);
+													// $event_start_date_german = implode(" ",$event_start_date_german);
+													$event_location_address = tribe_get_full_address($event_single);
 
-									$event_venue_id = get_post_meta($event_id, '_EventVenueID', true);
-									$event_venue_address = get_post_meta($event_venue_id, '_VenueAddress', true);
-									$event_venue_city = get_post_meta($event_venue_id, '_VenueCity', true);
-									$event_venue_country = get_post_meta($event_venue_id, '_VenueCountry', true);
-									$event_venue_province = get_post_meta($event_venue_id, '_VenueProvince', true);
-
-
-									$event_cost = get_post_meta($event_id, '_EventCost', true);
-
-									$dasgongbad_external_tickets_url = get_post_meta($event_id, 'dasgongbad_external_tickets', true);
-
-									$external_event_ticekts_options = get_post_meta($event_id, 'enable_external_tickets', true);
-									$dasgongbad_external_tickets_price = get_post_meta($event_id, 'dasgongbad_external_tickets_price', true);
+													$event_venue_id = get_post_meta($event_id, '_EventVenueID', true);
+													$event_venue_address = get_post_meta($event_venue_id, '_VenueAddress', true);
+													$event_venue_city = get_post_meta($event_venue_id, '_VenueCity', true);
+													$event_venue_country = get_post_meta($event_venue_id, '_VenueCountry', true);
+													$event_venue_province = get_post_meta($event_venue_id, '_VenueProvince', true);
 
 
+													$event_cost = get_post_meta($event_id, '_EventCost', true);
 
-									$tickets = Tribe__Tickets__Tickets::get_all_event_tickets($event_id);
-									$product_id = $tickets[0]->ID;
-									$ticket_stock = get_post_meta($product_id, '_stock', true);
+													$dasgongbad_external_tickets_url = get_post_meta($event_id, 'dasgongbad_external_tickets', true);
+
+													$external_event_ticekts_options = get_post_meta($event_id, 'enable_external_tickets', true);
+													$dasgongbad_external_tickets_price = get_post_meta($event_id, 'dasgongbad_external_tickets_price', true);
 
 
 
-									$event_image = get_the_post_thumbnail_url($event_id);
-									$get_new_date = str_replace(' ', '-', $event_start_date);
-									$newstr_date = explode(',', $get_new_date);
-									$newstr_date = $newstr_date[0];
+													$tickets = Tribe__Tickets__Tickets::get_all_event_tickets($event_id);
+													$product_id = $tickets[0]->ID;
+													$ticket_stock = get_post_meta($product_id, '_stock', true);
 
 
-								?>
-					<div class="event-item" id="<?php echo $newstr_date;  ?>">
-						<div class="event-top" id="<?php echo $event_slug;  ?>">
-							<?php if ($event_title) : ?>
-								<h2 class="event-title"><a href="<?php echo esc_url($event_link); ?>"><?php echo esc_html($event_title); ?></a></h2>
-							<?php endif; ?>
 
-							<?php if (!empty($event_start_date)) : ?>
+													$event_image = get_the_post_thumbnail_url($event_id);
+													$get_new_date = str_replace(' ', '-', $event_start_date);
+													$newstr_date = explode(',', $get_new_date);
+													$newstr_date = $newstr_date[0];
 
-								<h3 class="event-date"><a href="<?php echo esc_url($event_link); ?>"><?php echo esc_html($event_start_date); ?> <?php if ($event_end_date) : ?> - <?php echo esc_html($event_end_date); ?><?php endif; ?></a></h3>
-							<?php endif; ?>
 
-							<div class="mobile-show">
-								<div class="event_address_list">
-									<?php if ($event_venue_city) : ?>
-										<span><?php echo $event_venue_city; ?> <?php echo $event_venue_country; ?> </span>
+												?>
+					<div class="event-item" id="<?php echo esc_attr($newstr_date); ?>">
+						<div class="d-flex cpm-events-list">
+							<div class="cpm-events-date">
+								<?php if (!empty($event_start_date)) : ?>
+								<div class="cpm-event-date">	<?php echo esc_html($event_start_date); ?></div>
+								<div class="cpm-event-time"> <?php if (!empty($event_end_date)) : ?> 
+									<?php echo esc_html($event_start_datetime); ?>
+										-  <?php echo esc_html($event_end_date); ?></div>
 									<?php endif; ?>
-									<?php if ($event_venue_province) : ?>
-										<span><?php echo $event_venue_province; ?></span>
-									<?php endif; ?>
-									<?php if ($event_venue_address) : ?>
-										<span><?php echo $event_venue_address; ?></span>
-									<?php endif; ?>
-
-								</div>
+								<?php endif; ?>
 							</div>
 
-							<?php if ($external_event_ticekts_options == 'yes') { ?>
-								<?php if ($dasgongbad_external_tickets_price) : ?><h3 class="event-price"><?php echo pll_e('Price:'); ?> CHF <?php echo esc_html($dasgongbad_external_tickets_price); ?></h3><?php endif; ?>
+							<div class="cpm-events-title">
+								<?php if (!empty($event_title)) : ?>
 
-								<a target="_blank" href="<?php echo ($dasgongbad_external_tickets_url); ?>" class="reserve-ticket"><?php echo pll_e('Reserve Your Space'); ?></a>
-
-							<?php
-									} else { ?>
-								<?php if ($event_cost) : ?><h3 class="event-price"><?php echo pll_e('Price:'); ?> CHF <?php echo esc_html($event_cost); ?></h3><?php endif; ?>
-
-								<a href="#exampleModalCenter-<?php echo ($event_id); ?>" data-toggle="modal" class="reserve-ticket"><?php echo pll_e('Reserve Your Space'); ?></a>
-
-							<?php }
-
-
-							?>
-
-						</div>
-						<div class="event-detail-wrap">
-							<?php if ($event_image) : ?>
-								<div class="event-img">
-									<img src="<?php echo $event_image; ?>">
-								</div>
-							<?php endif; ?>
-							<?php if ($event_content) { ?>
-								<div class="event-desc">
-									<p><?php echo wp_trim_words($event_content, 25); ?> <a href="<?php echo esc_url($event_link); ?>" class="see_more">See more..</a>
-									</p>
-								</div>
-							<?php } else { ?>
-
-								<div class="event-desc">
-									<p style="visibility: hidden;">
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-									</p>
-								</div>
-							<?php
-									} ?>
-							<div class="event-right">
-								<?php //tribe_events_get_ticket_event($event_id); 
-								?>
-
-
-								<!-- Modal -->
-								<div class="modal fade" id="exampleModalCenter-<?php echo ($event_id); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLongTitle"><?php echo esc_html($event_title); ?> Tickets</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
+									<a href="<?php echo esc_url($event_link); ?>">
+										<?php echo esc_html($event_title); ?>
+									</a>
+									<div class="event-detail-wrap">
+										<?php if ($event_image) : ?>
+											<div class="event-img">
+												<img src="<?php echo $event_image; ?>">
 											</div>
-											<div class="modal-body">
-												<div class="tribe-dialog__wrapper tribe-modal__wrapper--ar" role="dialog">
-													<div role="document">
+										<?php endif; ?>
+										<?php if ($event_content) { ?>
+											<div class="event-description">
+												<p><?php echo wp_trim_words($event_content, 25); ?> <a href="<?php echo esc_url($event_link); ?>" class="see_more">See more..</a>
+												</p>
+											</div>
+										<?php } else { ?>
 
-														<div class="tribe-dialog__content tribe-modal__content">
-															<form action="/cart/?provider=tribe_wooticket" method="post" enctype="multipart/form-data">
+											<div class="event-desc">
+												<p style="visibility: hidden;">
+													Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+												</p>
+											</div>
+										<?php
+														} ?>
 
-																<div class="custom">
-																	<?php if ($event_title) : ?>
-																		<h2 class="event-title"><?php echo esc_html($event_title); ?></h2>
-																		<div class="tribe-common-b3 tribe-tickets__item__extra__available">
-																			<span class="no_availabe_tickets"><?php echo $ticket_stock; ?></span> : available
+									</div>
+								<?php endif; ?>
+
+							</div>
+
+							<div class="cpm-events-address">
+								<a href="#exampleModalCenter-36852" data-toggle="modal" class="reserve-ticket">
+									Reserve Your Space </a>
+								<div class="event_address_list">
+									<div class="event-right">
+										<?php //tribe_events_get_ticket_event($event_id); 
+										?>
+
+
+										<!-- Modal -->
+										<div class="modal fade" id="exampleModalCenter-<?php echo ($event_id); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLongTitle"><?php echo esc_html($event_title); ?> Tickets</h5>
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														<div class="tribe-dialog__wrapper tribe-modal__wrapper--ar" role="dialog">
+															<div role="document">
+
+																<div class="tribe-dialog__content tribe-modal__content">
+																	<form action="/cart/?provider=tribe_wooticket" method="post" enctype="multipart/form-data">
+
+																		<div class="custom">
+																			<?php if ($event_title) : ?>
+																				<h2 class="event-title"><?php echo esc_html($event_title); ?></h2>
+																				<div class="tribe-common-b3 tribe-tickets__item__extra__available">
+																					<span class="no_availabe_tickets"><?php echo $ticket_stock; ?></span> : available
+																				</div>
+																			<?php endif; ?>
+																			<?php
+
+																			$ticket_id_new = tribe_get_woo_tickets_ids($event_id);
+																			foreach ($ticket_id_new as $ticket) {
+																			?>
+																				<input type="hidden" id="ticket_id" name="ticket_id" value="<?php echo esc_html($ticket); ?>">
+																			<?php
+																			} ?>
+
+
+																			<div class="event-wrap">
+																				<span class="event-custom">
+																					<span class="">CHF </span>
+																					<span class=""><?php echo esc_html($event_cost); ?></span>
+																					<input type="hidden" id="price" name="price" value="<?php echo esc_html($event_cost); ?>">
+																				</span>
+																				<div>
+																					<span class="event-custom">
+																						<input id="qty" name="price_qty" type="number" class="" step="1" min="1" max="10000" value="1" autocomplete="off">
+																					</span>
+																				</div>
+																				<span class="event-custom">
+																					<span class="">CHF </span>
+
+																					<input type="text" id="amount" name="amount" value="<?php echo esc_html($event_cost); ?>" readonly>
+																				</span>
+
+																			</div>
 																		</div>
-																	<?php endif; ?>
-																	<?php
+																		<?php
+																		if ($ticket_stock == '0') { ?>
 
-																	$ticket_id_new = tribe_get_woo_tickets_ids($event_id);
-																	foreach ($ticket_id_new as $ticket) {
-																	?>
-																		<input type="hidden" id="ticket_id" name="ticket_id" value="<?php echo esc_html($ticket); ?>">
-																	<?php
-																	} ?>
+																			<div class="modal-footer">
+																				<p class="tribe-common-c-btn tribe-common-c-btn--small tribe-tickets__submit">No Tickets Availabe</p>
+																			</div>
 
+																		<?php
+																		} else { ?>
 
-																	<div class="event-wrap">
-																		<span class="event-custom">
-																			<span class="">CHF </span>
-																			<span class=""><?php echo esc_html($event_cost); ?></span>
-																			<input type="hidden" id="price" name="price" value="<?php echo esc_html($event_cost); ?>">
-																		</span>
-																		<div>
-																			<span class="event-custom">
-																				<input id="qty" name="price_qty" type="number" class="" step="1" min="1" max="10000" value="1" autocomplete="off">
-																			</span>
-																		</div>
-																		<span class="event-custom">
-																			<span class="">CHF </span>
+																			<div class="modal-footer">
+																				<button type="submit" class="tribe-common-c-btn tribe-common-c-btn--small tribe-tickets__submit" name="submit">Get Tickets</button>
+																			</div>
+																		<?php
+																		}
 
-																			<input type="text" id="amount" name="amount" value="<?php echo esc_html($event_cost); ?>" readonly>
-																		</span>
+																		?>
 
-																	</div>
+																	</form>
 																</div>
-																<?php
-																if ($ticket_stock == '0') { ?>
-
-																	<div class="modal-footer">
-																		<p class="tribe-common-c-btn tribe-common-c-btn--small tribe-tickets__submit">No Tickets Availabe</p>
-																	</div>
-
-																<?php
-																} else { ?>
-
-																	<div class="modal-footer">
-																		<button type="submit" class="tribe-common-c-btn tribe-common-c-btn--small tribe-tickets__submit" name="submit">Get Tickets</button>
-																	</div>
-																<?php
-																}
-
-																?>
-
-															</form>
+															</div>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-								</div>
 
-								<div class="event_address_list">
-									<?php if ($event_venue_city) : ?>
-										<span><?php echo $event_venue_city; ?> <?php echo $event_venue_country; ?> </span>
-									<?php endif; ?>
-									<?php if ($event_venue_province) : ?>
-										<span><?php echo $event_venue_province; ?></span>
-									<?php endif; ?>
-									<?php if ($event_venue_address) : ?>
-										<span><?php echo $event_venue_address; ?></span>
-									<?php endif; ?>
+										<div class="event_address_list">
+											<?php if ($event_venue_city) : ?>
+												<span><?php echo $event_venue_city; ?> <?php echo $event_venue_country; ?> </span>
+											<?php endif; ?>
+											<?php if ($event_venue_province) : ?>
+												<span><?php echo $event_venue_province; ?></span>
+											<?php endif; ?>
+											<?php if ($event_venue_address) : ?>
+												<span><?php echo $event_venue_address; ?></span>
+											<?php endif; ?>
+
+										</div>
+
+									</div>
 
 								</div>
 
 							</div>
 						</div>
+
+
+
+
 					</div>
 
 				<?php
-									wp_reset_postdata();
-								}
+													wp_reset_postdata();
+												}
 
 				?>
 			</div>
@@ -943,7 +938,7 @@ if (!function_exists('dasgong_gift_shortcode_function')) {
 						<!-- <div class="quantity">
 							
 							<input type="number" id="quantity_613ef7603476b" class="input-text qty text" step="1" min="0" max="" name="quantity" value="1" title="Menge" size="4" placeholder="" inputmode="numeric">  <?php //echo pll_e('Number of sessions');
-																																																						?>
+																																																																																																					?>
 						</div> -->
 
 						<h3>Delivery info</h3>
