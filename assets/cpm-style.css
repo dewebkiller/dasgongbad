@@ -7,7 +7,6 @@
 /*-----------------*\
 	#BACK TO TOP
 \*-----------------*/
-
 #back-to-top {
     background: transparent;
     bottom: 30px;
@@ -81,10 +80,34 @@ footer.site-footer {
     transition: top 0.5s ease-in-out 0.5s !important;
 }
 #right-menu {
-    display: block;
+    display: none;
+}
+header .navbar-brand {
+    width: 20%;
 }
 header .header-page-title.primary-menu-wrapper {
-    left: 33%;
+    left: 0;
+    position: relative;
+    display: flex;
+    top: 8px;
+    text-align: right;
+    align-items: center;
+    align-content: center;
+}
+.cpm-header-right {
+    float: right;
+    width: 78%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.cpm-header-right .secondary-menu {
+    float: right;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    margin-right: 0;
 }
 .primary-menu-wrapper ul.menu {
     display: flex;
@@ -111,6 +134,8 @@ header .header-page-title.primary-menu-wrapper {
 
 .secondary-menu .menu {
     display: block;
+    margin-left: 0;
+    /* margin-right: 3em; */
 }
 
 .secondary-menu .menu li {
@@ -543,6 +568,12 @@ div#boxzilla-overlay-8165 {
         display: block;
     }
 }
+@media only screen and (max-width: 1024px) {
+    #right-menu {
+        display: block;
+    } 
+}
+
 /* Niresh CSS */
 .site-footer .col-md-3 {
     top: 0 !important;
@@ -553,4 +584,46 @@ div#boxzilla-overlay-8165 {
 }
 .event-section .event-item p {
    margin-bottom: 0;
+}
+.cpm-events-list .cpm-events-date {
+    width: 20%;
+    background: #f0f0f0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    margin-right: 50px;
+    row-gap: 10px;
+}
+.cpm-events-list .cpm-events-date .cpm-event-date {
+    font-size: 30px;
+    font-weight: 600;
+}
+.cpm-events-list .cpm-event-time {
+    line-height: 1;
+}
+.cpm-events-list .cpm-events-title {
+    width: 63%;
+    margin-right: 50px;
+}
+
+.cpm-events-list .cpm-events-address {
+    width: 20%;
+}
+.cpm-events-list .cpm-events-address .event_address_list span {
+    text-align: center;
+}
+.cpm-events-list .cpm-events-address a.reserve-ticket {
+    border: 1px solid #c2ae67;
+    padding: 10px 20px;
+
+}
+.cpm-events-list .cpm-events-address .event_address_list {
+    clear: both;
+}
+.cpm-btm-footer {
+    padding-top: 40px;
+    margin-top: 40px;
+    border-top: 1px solid #eee;
 }

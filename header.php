@@ -19,35 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name=“facebook-domain-verification” content=“5mqfi39kktdceythffakrkf059eiic” />
     <link rel="profile" href="https://gmpg.org/xfn/11">
-    <!-- Facebook Pixel Code -->
-    <script>
-        ! function(f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function() {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '374849710045968');
-        fbq('track', 'PageView');
-    </script>
-    <noscript>
-        <img height="1" width="1"
-            src="https://www.facebook.com/tr?id=553721675505659&ev=PageView
-	&noscript=1" />
-    </noscript>
-    <!-- End Facebook Pixel Code -->
+    <meta name=”facebook-domain-verification” content=”5mqfi39kktdceythffakrkf059eiic” />
+
     <?php wp_head(); ?>
 </head>
 
@@ -70,16 +43,21 @@
                         <?php
 
                         $custom_logo_id = get_theme_mod('custom_logo');
-                        $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
-                        if (has_custom_logo()) {
-                            echo '<img src="' . esc_url($logo) . '" alt="' . get_bloginfo('name') . '">';
+                        // Get the image source array
+                        $logo_array = wp_get_attachment_image_src($custom_logo_id, 'full');
+
+                        if (has_custom_logo() && $logo_array) {
+                            // Use the first element of the array ($logo_array[0]) for the URL
+                            echo '<img src="' . esc_url($logo_array[0]) . '" alt="' . get_bloginfo('name') . '" width="50%">';
                         } else {
-                            echo  pll_e('Book a 1-1 Session');
+                            // Call pll_e() by itself without echo
+                            pll_e('Book a 1-1 Session');
                         }
 
                         ?>
-
                         </a>
+                    </a>
+                    <div class="cpm-header-right">
                         <div class="header-page-title primary-menu-wrapper">
 
                             <?php
@@ -113,11 +91,13 @@
                                 <div class="hamburger-menu"></div>
                             </div>
                         </a>
+                    </div>
+
+
+
             </div>
         </div>
     </header>
-
-
     <div id="sidr">
         <?php
         wp_nav_menu(array(

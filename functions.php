@@ -165,6 +165,29 @@ function dasgongbad_widgets_init()
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	));
+
+		// Bottom Footer Widget Area Left, located in the footer.
+		register_sidebar(array(
+			'name' => __('Footer Bottom Widget left', 'dasgongbad'),
+			'id' => 'btm-footer-widget-area-left',
+			'description' => __('Footer Bottom Widget left', 'dasgongbad'),
+			'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>',
+		));
+
+		// Bottom Footer Widget Area Right, located in the footer.
+		register_sidebar(array(
+			'name' => __('Footer Bottom Widget right', 'dasgongbad'),
+			'id' => 'btm-footer-widget-area-right',
+			'description' => __('Footer Bottom Widget rght', 'dasgongbad'),
+			'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>',
+		));
+
 }
 add_action('widgets_init', 'dasgongbad_widgets_init');
 
@@ -386,66 +409,66 @@ function upcoming_events_functions($atts)
 		<div class="container">
 			<div class="row"><?php
 
-												// Loop through the events, displaying the title and content for each
-												foreach ($events as $event_single) {
+								// Loop through the events, displaying the title and content for each
+								foreach ($events as $event_single) {
 
 
-													setup_postdata($event_single);
+									setup_postdata($event_single);
 
-													$event_id = $event_single->ID;
-													$event_title = $event_single->post_title;
-													$event_content = $event_single->post_content;
-													// $event_link = $event_single->guid;
-													$event_link = get_permalink($event_id);
-													$event_slug_post = get_post($event_id);
-													$event_slug = $event_slug_post->post_name;
-													$event_start_date = tribe_get_start_date($event_id, true, 'F j');
-													$event_start_datetime = tribe_get_start_date($event_id, true, ' G:i');
-													$event_end_date = tribe_get_end_date($event_id, true, 'G:i');
-													// $event_start_date_german = explode(" ",$event_start_date);
-													// $event_start_date_german = change_date_to_german($event_start_date_german);
-													// $event_start_date_german = implode(" ",$event_start_date_german);
-													$event_location_address = tribe_get_full_address($event_single);
+									$event_id = $event_single->ID;
+									$event_title = $event_single->post_title;
+									$event_content = $event_single->post_content;
+									// $event_link = $event_single->guid;
+									$event_link = get_permalink($event_id);
+									$event_slug_post = get_post($event_id);
+									$event_slug = $event_slug_post->post_name;
+									$event_start_date = tribe_get_start_date($event_id, true, 'F j');
+									$event_start_datetime = tribe_get_start_date($event_id, true, ' G:i');
+									$event_end_date = tribe_get_end_date($event_id, true, 'G:i');
+									// $event_start_date_german = explode(" ",$event_start_date);
+									// $event_start_date_german = change_date_to_german($event_start_date_german);
+									// $event_start_date_german = implode(" ",$event_start_date_german);
+									$event_location_address = tribe_get_full_address($event_single);
 
-													$event_venue_id = get_post_meta($event_id, '_EventVenueID', true);
-													$event_venue_address = get_post_meta($event_venue_id, '_VenueAddress', true);
-													$event_venue_city = get_post_meta($event_venue_id, '_VenueCity', true);
-													$event_venue_country = get_post_meta($event_venue_id, '_VenueCountry', true);
-													$event_venue_province = get_post_meta($event_venue_id, '_VenueProvince', true);
-
-
-													$event_cost = get_post_meta($event_id, '_EventCost', true);
-
-													$dasgongbad_external_tickets_url = get_post_meta($event_id, 'dasgongbad_external_tickets', true);
-
-													$external_event_ticekts_options = get_post_meta($event_id, 'enable_external_tickets', true);
-													$dasgongbad_external_tickets_price = get_post_meta($event_id, 'dasgongbad_external_tickets_price', true);
+									$event_venue_id = get_post_meta($event_id, '_EventVenueID', true);
+									$event_venue_address = get_post_meta($event_venue_id, '_VenueAddress', true);
+									$event_venue_city = get_post_meta($event_venue_id, '_VenueCity', true);
+									$event_venue_country = get_post_meta($event_venue_id, '_VenueCountry', true);
+									$event_venue_province = get_post_meta($event_venue_id, '_VenueProvince', true);
 
 
+									$event_cost = get_post_meta($event_id, '_EventCost', true);
 
-													$tickets = Tribe__Tickets__Tickets::get_all_event_tickets($event_id);
-													$product_id = $tickets[0]->ID;
-													$ticket_stock = get_post_meta($product_id, '_stock', true);
+									$dasgongbad_external_tickets_url = get_post_meta($event_id, 'dasgongbad_external_tickets', true);
+
+									$external_event_ticekts_options = get_post_meta($event_id, 'enable_external_tickets', true);
+									$dasgongbad_external_tickets_price = get_post_meta($event_id, 'dasgongbad_external_tickets_price', true);
 
 
 
-													$event_image = get_the_post_thumbnail_url($event_id);
-													$get_new_date = str_replace(' ', '-', $event_start_date);
-													$newstr_date = explode(',', $get_new_date);
-													$newstr_date = $newstr_date[0];
+									$tickets = Tribe__Tickets__Tickets::get_all_event_tickets($event_id);
+									$product_id = $tickets[0]->ID;
+									$ticket_stock = get_post_meta($product_id, '_stock', true);
 
 
-												?>
+
+									$event_image = get_the_post_thumbnail_url($event_id);
+									$get_new_date = str_replace(' ', '-', $event_start_date);
+									$newstr_date = explode(',', $get_new_date);
+									$newstr_date = $newstr_date[0];
+
+
+								?>
 					<div class="event-item" id="<?php echo esc_attr($newstr_date); ?>">
 						<div class="d-flex cpm-events-list">
 							<div class="cpm-events-date">
 								<?php if (!empty($event_start_date)) : ?>
-								<div class="cpm-event-date">	<?php echo esc_html($event_start_date); ?></div>
-								<div class="cpm-event-time"> <?php if (!empty($event_end_date)) : ?> 
-									<?php echo esc_html($event_start_datetime); ?>
-										-  <?php echo esc_html($event_end_date); ?></div>
-									<?php endif; ?>
+									<div class="cpm-event-date"> <?php echo esc_html($event_start_date); ?></div>
+									<div class="cpm-event-time"> <?php if (!empty($event_end_date)) : ?>
+											<?php echo esc_html($event_start_datetime); ?>
+											- <?php echo esc_html($event_end_date); ?></div>
 								<?php endif; ?>
+							<?php endif; ?>
 							</div>
 
 							<div class="cpm-events-title">
@@ -465,15 +488,7 @@ function upcoming_events_functions($atts)
 												<p><?php echo wp_trim_words($event_content, 25); ?> <a href="<?php echo esc_url($event_link); ?>" class="see_more">See more..</a>
 												</p>
 											</div>
-										<?php } else { ?>
-
-											<div class="event-desc">
-												<p style="visibility: hidden;">
-													Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-												</p>
-											</div>
-										<?php
-														} ?>
+										<?php } ?>
 
 									</div>
 								<?php endif; ?>
@@ -595,8 +610,8 @@ function upcoming_events_functions($atts)
 					</div>
 
 				<?php
-													wp_reset_postdata();
-												}
+									wp_reset_postdata();
+								}
 
 				?>
 			</div>
@@ -938,7 +953,7 @@ if (!function_exists('dasgong_gift_shortcode_function')) {
 						<!-- <div class="quantity">
 							
 							<input type="number" id="quantity_613ef7603476b" class="input-text qty text" step="1" min="0" max="" name="quantity" value="1" title="Menge" size="4" placeholder="" inputmode="numeric">  <?php //echo pll_e('Number of sessions');
-																																																																																																					?>
+																																																						?>
 						</div> -->
 
 						<h3>Delivery info</h3>

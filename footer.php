@@ -39,6 +39,30 @@
           </div>
       </div>
   </div>
+  <div class="container cpm-btm-footer">
+      <div class="row">
+          <div class="col-md-6">
+&copy; <?php echo date('Y');?>. All Rights Reserved. <?php echo get_bloginfo('name');?>
+          </div>
+
+          <div class="col-md-6">
+          <div id="language_menu" class="secondary-menu">
+
+
+                            <?php
+                            wp_nav_menu(array(
+                                'menu'            => 'secondary',
+                                'theme_location'  => 'menu-2',
+                                //'container'       => 'ul',
+                                'menu_id'         => false,
+                                'depth'           => 0,
+
+                            ));
+                            ?>
+                        </div>
+          </div>
+      </div>
+  </div>
 <div>
   <a id="back-to-top" class="show">
     <i class="fa fa-angle-up"></i>
