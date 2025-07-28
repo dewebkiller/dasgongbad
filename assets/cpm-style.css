@@ -520,60 +520,6 @@ div#boxzilla-overlay-8165 {
     background-color: rgb(0 0 0 / 15%) !important;
 }
 
-@media only screen and (max-width: 767px) {
-    .single_event_inner_wrap {
-        display: flex;
-        flex-direction: column;
-    }
-    .single-tribe_events .tribe-common.tribe-tickets {
-        order: 1;
-        width: 100%;
-        margin-bottom: 30px;
-    }
-    .tribe-events-single-event-description.tribe-events-content {
-        order: 2;
-    }
-    .single-tribe_events .tribe-events-cal-links {
-        order: 3;
-    }
-    #yeloni-email-form {
-        justify-content: center;
-        width: 100%;
-    }
-    div#yeloni-email-form div {
-        text-align: center;
-    }
-    html.pum-open.pum-open-overlay.pum-open-scrollable body>[aria-hidden] {
-        padding-right: 0px !important;
-    }
-	div#yel-popup-content {
-		background: url(https://dasgongbad.com/wp-content/uploads/2022/09/poup-img-mobile.jpeg);
-   		background-position: left center;
-    	background-repeat: no-repeat;
-    	background-size: cover;
-		position:relative;
-	}
-	div#yel-popup-content:before {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: #00000055;
-}
-}
-@media only screen and (max-width: 480px) {
-    #right-menu {
-        display: block;
-    }
-}
-@media only screen and (max-width: 1024px) {
-    #right-menu {
-        display: block;
-    } 
-}
-
 /* Niresh CSS */
 .site-footer .col-md-3 {
     top: 0 !important;
@@ -626,4 +572,90 @@ div#boxzilla-overlay-8165 {
     padding-top: 40px;
     margin-top: 40px;
     border-top: 1px solid #eee;
+}
+@media only screen and (max-width: 767px) {
+    header .navbar-brand {
+        width: 40%;
+        margin-right: 0;
+    }
+    header .navbar-brand  img {
+        width: 100%;
+    }
+    .cpm-header-right {
+        width: 60%;
+    }
+    .single_event_inner_wrap {
+        display: flex;
+        flex-direction: column;
+    }
+    .cpm-events-list {
+        flex-direction: column;
+    }
+    .cpm-events-list .cpm-events-date , .cpm-events-list .cpm-events-title, .cpm-events-list .cpm-events-address {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .cpm-events-list .cpm-events-date {
+        padding: 15px 0;
+    }
+    .cpm-events-title > a {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .event-detail-wrap {
+        padding: 0;
+    }
+    .single-tribe_events .tribe-common.tribe-tickets {
+        order: 1;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .tribe-events-single-event-description.tribe-events-content {
+        order: 2;
+    }
+    .single-tribe_events .tribe-events-cal-links {
+        order: 3;
+    }
+    #yeloni-email-form {
+        justify-content: center;
+        width: 100%;
+    }
+    div#yeloni-email-form div {
+        text-align: center;
+    }
+    html.pum-open.pum-open-overlay.pum-open-scrollable body>[aria-hidden] {
+        padding-right: 0px !important;
+    }
+	div#yel-popup-content {
+		background: url(https://dasgongbad.com/wp-content/uploads/2022/09/poup-img-mobile.jpeg);
+   		background-position: left center;
+    	background-repeat: no-repeat;
+    	background-size: cover;
+		position:relative;
+	}
+	div#yel-popup-content:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #00000055;
+}
+.cpm-btm-footer.secondary-menu {
+    float: left;
+    padding-left: 5px;
+}
+}
+@media only screen and (max-width: 480px) {
+    #right-menu {
+        display: block;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    #right-menu {
+        display: block;
+    } 
 }
