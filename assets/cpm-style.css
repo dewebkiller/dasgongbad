@@ -658,4 +658,7 @@ div#boxzilla-overlay-8165 {
     #right-menu {
         display: block;
     } 
+    .primary-menu-wrapper{
+        display: none !important;
+    } 
 }
