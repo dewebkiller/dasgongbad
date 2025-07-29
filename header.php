@@ -33,10 +33,10 @@
 
                 <!-- <a class="navbar-brand" href="#">Book a 1-1 Gong Bath</a> -->
                 <?php if (pll_current_language() == 'en') {  ?>
-                    <a class="navbar-brand" href="<?php echo site_url(); ?>/1-1-session/">
+                    <a class="navbar-brand" href="<?php echo site_url(); ?>/en/">
                     <?php } else { ?>
 
-                        <a class="navbar-brand" href="<?php echo site_url(); ?>/1-1-sitzung/">
+                        <a class="navbar-brand" href="<?php echo site_url(); ?>">
                         <?php
 
                     } ?>
@@ -48,7 +48,7 @@
 
                         if (has_custom_logo() && $logo_array) {
                             // Use the first element of the array ($logo_array[0]) for the URL
-                            echo '<img src="' . esc_url($logo_array[0]) . '" alt="' . get_bloginfo('name') . '" width="50%">';
+                            echo '<img src="' . esc_url($logo_array[0]) . '" alt="' . get_bloginfo('name') . '" width="70%">';
                         } else {
                             // Call pll_e() by itself without echo
                             pll_e('Book a 1-1 Session');

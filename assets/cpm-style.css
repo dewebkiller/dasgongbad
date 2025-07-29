@@ -7,6 +7,9 @@
 /*-----------------*\
 	#BACK TO TOP
 \*-----------------*/
+p {
+    margin-bottom: 20px !important;
+}
 #back-to-top {
     background: transparent;
     bottom: 30px;
@@ -84,6 +87,9 @@ footer.site-footer {
 }
 header .navbar-brand {
     width: 20%;
+}
+header .navbar-brand img {
+    width: 70%;
 }
 header .header-page-title.primary-menu-wrapper {
     left: 0;
