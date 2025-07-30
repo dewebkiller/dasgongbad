@@ -32,66 +32,71 @@
             <div class="row">
 
                 <!-- <a class="navbar-brand" href="#">Book a 1-1 Gong Bath</a> -->
-                <?php if (pll_current_language() == 'en') {  ?>
-                    <a class="navbar-brand" href="<?php echo site_url(); ?>/en/">
-                    <?php } else { ?>
+                <?php
+                // 1. Set default variables for the German language.
+                $link_slug = 'kommende-veranstaltungen/';
+                $fallback_text = 'Kommende Veranstaltungen';
 
-                        <a class="navbar-brand" href="<?php echo site_url(); ?>">
+                // 2. Check the current language and update variables if it's English.
+                if (pll_current_language() == 'en') {
+                    $link_slug = 'en/upcoming-events/';
+                    $fallback_text = 'See Upcoming Events';
+                }
+
+                // 3. Construct the final URL.
+                $url = site_url('/' . $link_slug);
+                ?>
+
+                <a class="navbar-brand" href="<?php echo esc_url($url); ?>">
+                    <?php
+                    // 5. Check if a custom logo exists.
+                    $custom_logo_id = get_theme_mod('custom_logo');
+                    $logo_array = wp_get_attachment_image_src($custom_logo_id, 'full');
+
+                    if (has_custom_logo() && $logo_array) {
+                        // If YES, display the logo image.
+                        echo '<img src="' . esc_url($logo_array[0]) . '" alt="' . get_bloginfo('name') . '" width="70%">';
+                    } else {
+                        // If NO, display the language-specific fallback text.
+                        echo esc_html($fallback_text);
+                    }
+                    ?>
+                </a>
+                <div class="cpm-header-right">
+                    <div class="header-page-title primary-menu-wrapper">
+
                         <?php
+                        wp_nav_menu(array(
+                            'menu'            => 'primary',
+                            'theme_location'  => 'menu-1',
+                            'container'       => 'ul',
+                            'menu_id'         => false,
+                            'depth'           => 0,
 
-                    } ?>
-                        <?php
-
-                        $custom_logo_id = get_theme_mod('custom_logo');
-                        // Get the image source array
-                        $logo_array = wp_get_attachment_image_src($custom_logo_id, 'full');
-
-                        if (has_custom_logo() && $logo_array) {
-                            // Use the first element of the array ($logo_array[0]) for the URL
-                            echo '<img src="' . esc_url($logo_array[0]) . '" alt="' . get_bloginfo('name') . '" width="70%">';
-                        } else {
-                            // Call pll_e() by itself without echo
-                            pll_e('Book a 1-1 Session');
-                        }
-
+                        ));
                         ?>
-                        </a>
-                    </a>
-                    <div class="cpm-header-right">
-                        <div class="header-page-title primary-menu-wrapper">
 
-                            <?php
-                            wp_nav_menu(array(
-                                'menu'            => 'primary',
-                                'theme_location'  => 'menu-1',
-                                'container'       => 'ul',
-                                'menu_id'         => false,
-                                'depth'           => 0,
-
-                            ));
-                            ?>
-
-                        </div>
-                        <div id="language_menu" class="secondary-menu">
-
-
-                            <?php
-                            wp_nav_menu(array(
-                                'menu'            => 'secondary',
-                                'theme_location'  => 'menu-2',
-                                //'container'       => 'ul',
-                                'menu_id'         => false,
-                                'depth'           => 0,
-
-                            ));
-                            ?>
-                        </div>
-                        <a id="right-menu" href="#sidr">
-                            <div class="menu-wrapper">
-                                <div class="hamburger-menu"></div>
-                            </div>
-                        </a>
                     </div>
+                    <div id="language_menu" class="secondary-menu">
+
+
+                        <?php
+                        wp_nav_menu(array(
+                            'menu'            => 'secondary',
+                            'theme_location'  => 'menu-2',
+                            //'container'       => 'ul',
+                            'menu_id'         => false,
+                            'depth'           => 0,
+
+                        ));
+                        ?>
+                    </div>
+                    <a id="right-menu" href="#sidr">
+                        <div class="menu-wrapper">
+                            <div class="hamburger-menu"></div>
+                        </div>
+                    </a>
+                </div>
 
 
 

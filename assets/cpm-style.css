@@ -530,7 +530,7 @@ div#boxzilla-overlay-8165 {
 .site-footer .col-md-3 {
     top: 0 !important;
 }
-.event-section .event-item {
+/* .event-section .event-item {
     border: 1px solid #eee;
     padding: 30px 20px;
 }
@@ -573,12 +573,23 @@ div#boxzilla-overlay-8165 {
 }
 .cpm-events-list .cpm-events-address .event_address_list {
     clear: both;
+} */
+.event-detail-wrap .event-desc {
+    width: 75% !important;
+}
+.event-detail-wrap .event-right {
+    width: 25% !important;
+}
+.event-item a.reserve-ticket {
+    margin-right: 0 !important;
+    text-align: right !important;
 }
 .cpm-btm-footer {
     padding-top: 40px;
     margin-top: 40px;
     border-top: 1px solid #eee;
 }
+
 @media only screen and (max-width: 767px) {
     header .navbar-brand {
         width: 40%;
