@@ -15,12 +15,12 @@
 <footer class="site-footer">
    <div class="container">
       <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-3 footer-widget-1">
 
           	 <?php dynamic_sidebar( 'first-footer-widget-area' ); ?>
           </div>
 
-          <div class="col-md-3">
+          <div class="col-md-3 footer-widget-2">
 
           	 <?php 
 
@@ -34,8 +34,11 @@
           
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-3 footer-widget-3">
           	 <?php dynamic_sidebar( 'third-footer-widget-area' ); ?>
+          </div>
+          <div class="col-md-3 text-right footer-widget-4">
+          	 <?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>
           </div>
       </div>
   </div>

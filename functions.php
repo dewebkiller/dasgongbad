@@ -166,6 +166,17 @@ function dasgongbad_widgets_init()
 		'after_title' => '</h3>',
 	));
 
+	// Fourth Footer Widget Area, located in the footer.
+	register_sidebar(array(
+		'name' => __('Fourth Fourth Widget Area', 'dasgongbad'),
+		'id' => 'fourth-footer-widget-area',
+		'description' => __('The fourth footer widget area', 'dasgongbad'),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	));
+
 	// Bottom Footer Widget Area Left, located in the footer.
 	register_sidebar(array(
 		'name' => __('Footer Bottom Widget left', 'dasgongbad'),
