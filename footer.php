@@ -36,6 +36,9 @@
 
           <div class="col-md-3 footer-widget-3">
           	 <?php dynamic_sidebar( 'third-footer-widget-area' ); ?>
+             <div class="display-sm">
+             <?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>
+             </div>
           </div>
           <div class="col-md-3 text-right footer-widget-4">
           	 <?php dynamic_sidebar( 'fourth-footer-widget-area' ); ?>

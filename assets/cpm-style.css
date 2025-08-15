@@ -7,8 +7,15 @@
 /*-----------------*\
 	#BACK TO TOP
 \*-----------------*/
+body {
+    font-size: 20px !important;
+}
 p {
-    margin-bottom: 20px !important;
+    margin-bottom: 10px !important;
+    font-size: 20px;
+}
+.display-sm {
+    display: none;
 }
 #back-to-top {
     background: transparent;
@@ -35,7 +42,24 @@ p {
 footer.site-footer {
     position: relative;
 }
-
+footer.site-footer .widget-container > img {
+    width: 65%;
+}
+.widget_nav_menu ul li {
+    line-height: 1.7em !important;
+}
+.widget_nav_menu ul li a, ul.footer-links a {
+    color: #000;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.7em;;
+}
+.footer-widget-2 {
+    padding-left: 60px;
+}
+.footer-widget-3 {
+    padding-left: 70px;
+}
 #back-to-top i {
     line-height: 43px;
 }
@@ -591,6 +615,12 @@ div#boxzilla-overlay-8165 {
 }
 
 @media only screen and (max-width: 767px) {
+    .display-sm {
+        display: block;
+    }
+    .footer-widget-4, .footer-widget-3 .display-sm .textwidget > p {
+        display: none;
+    }
     header .navbar-brand {
         width: 40%;
         margin-right: 0;
@@ -604,6 +634,9 @@ div#boxzilla-overlay-8165 {
     .single_event_inner_wrap {
         display: flex;
         flex-direction: column;
+    }
+    .event-detail-wrap .event-desc {
+        width: 100% !important;
     }
     .cpm-events-list {
         flex-direction: column;
@@ -660,6 +693,20 @@ div#boxzilla-overlay-8165 {
     top: 0;
     left: 0;
     background: #00000055;
+}
+.footer-widget-1 {
+    margin-top: 40px;
+}
+.footer-widget-2 {
+    padding-left: 15px;
+    margin-top: 40px;
+}
+.footer-widget-3 {
+    padding-left: 15px;
+    margin-top: 40px;
+}
+.footer-widget-4 {
+    text-align: left !important;
 }
 .cpm-btm-footer.secondary-menu {
     float: left;
