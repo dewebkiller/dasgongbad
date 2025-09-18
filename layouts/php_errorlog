@@ -1,0 +1,20 @@
+[20-Jan-2024 10:06:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/dasgongbad.com/public_html/wp-content/themes/das-gongbad/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/dasgongbad.com/public_html/wp-content/themes/das-gongbad/index.php on line 15
+[23-Jan-2024 12:14:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/dasgongbad.com/public_html/wp-content/themes/das-gongbad/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/dasgongbad.com/public_html/wp-content/themes/das-gongbad/index.php on line 15
+[24-Jan-2024 10:02:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/dasgongbad.com/public_html/wp-content/themes/das-gongbad/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/dasgongbad.com/public_html/wp-content/themes/das-gongbad/index.php on line 15
+[25-Jan-2024 12:53:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/dasgongbad.com/public_html/wp-content/themes/das-gongbad/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/dasgongbad.com/public_html/wp-content/themes/das-gongbad/index.php on line 15
+[28-Jan-2024 08:30:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/dasgongbad.com/public_html/wp-content/themes/das-gongbad/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/dasgongbad.com/public_html/wp-content/themes/das-gongbad/index.php on line 15
