@@ -3103,7 +3103,7 @@ span.event-custom,
 
 .single-post article .entry-content,
 .single-post article .entry-footer {
-    max-width: 650px;
+    /* max-width: 650px; */
     margin: 0 auto;
 }
 
@@ -3121,7 +3121,7 @@ span.event-custom,
 .single-post article .entry-content p,
 .single-post article .entry-content,
 .single-post article .entry-footer {
-    font-family: 'Armata', sans-serif !important;
+    /* font-family: 'Armata', sans-serif !important; */
 }
 
 .event-item h3.event-date,
