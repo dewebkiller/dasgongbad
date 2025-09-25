@@ -620,8 +620,27 @@ div#boxzilla-overlay-8165 {
   margin-top: 30px;
   border: 1px solid #383838;
 }
+#custom-price-wrapper {
+    margin-top: 15px;
+    padding: 15px;
+}
+#custom-price-wrapper .form-row {
+    gap:20px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#custom-price-wrapper .form-row label {
+    margin-bottom: 0;
+}
+#custom-price-wrapper input[type='number'] {
+    padding: 15px 20px 15px 20px;
+    margin-bottom: 20px;
+}
+a.color-base {
+  color: #b09431 !important;  
+}
 #dasgongbad_fixed_price_gift_card_form > select {
-  padding: 15px 45px 15px 45px;
+  padding: 15px 20px 15px 20px;
   border: 1px solid #000;
   border-radius: 3px;
 }
@@ -718,6 +737,15 @@ div#boxzilla-overlay-8165 {
   }
   .single-tribe_events .tribe-events-cal-links {
     order: 3;
+  }
+  .stories-wrap, .stories-wrap:nth-child(even) {
+    flex-direction: column;
+  }
+  .story-desc h2 {
+    width: 100% !important;
+  }
+  .story-desc, .stories-wrap {
+    min-height: 300px !important;
   }
   #yeloni-email-form {
     justify-content: center;

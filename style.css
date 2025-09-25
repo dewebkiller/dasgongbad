@@ -3100,13 +3100,32 @@ span.event-custom,
     display: inline-block;
     margin-right: 15px;
 }
-
+.section-stories-title {
+    padding: 80px 0;
+    margin: 0 auto;
+}
+.section-stories-title h2 {
+    font-size: 30px;
+    line-height: 1.7em;
+    font-weight: 500;
+}
+.story-desc h2 {
+    width: 50%;
+    font-weight: 500;
+    font-size: 29px;
+}
+.stories-wrap a.read-story {
+    border: 1px solid #c2ae67;
+    padding: 15px 45px 15px 45px; 
+}
 .single-post article .entry-content,
 .single-post article .entry-footer {
     /* max-width: 650px; */
     margin: 0 auto;
 }
-
+.grecaptcha-badge {
+    display: none;
+}
 .single-post article header.entry-header,
 .single-post article .post-thumbnail {
     text-align: center;

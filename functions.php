@@ -324,6 +324,12 @@ function das_gongbad_scripts()
 	wp_enqueue_script('dasgongbad-cpm-script-js', get_template_directory_uri() . '/assets/cpm-main.js', array(), '1.001', true);
 
 	wp_enqueue_script('das-gongbad-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true);
+	// localize ajax
+
+	wp_localize_script('dasgongbad-cpm-script-js', 'cpmAjax', array(
+		'ajaxurl' => admin_url('admin-ajax.php'),
+		'nonce' => wp_create_nonce('dasgongbad_cpm_nonce'),
+	));
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
@@ -419,55 +425,55 @@ function upcoming_events_functions($atts)
 		<div class="container">
 			<div class="row"><?php
 
-												// Loop through the events, displaying the title and content for each
-												foreach ($events as $event_single) {
+								// Loop through the events, displaying the title and content for each
+								foreach ($events as $event_single) {
 
 
-													setup_postdata($event_single);
+									setup_postdata($event_single);
 
-													$event_id = $event_single->ID;
-													$event_title = $event_single->post_title;
-													$event_content = $event_single->post_content;
-													// $event_link = $event_single->guid;
-													$event_link = get_permalink($event_id);
-													$event_slug_post = get_post($event_id);
-													$event_slug = $event_slug_post->post_name;
-													$event_start_date = tribe_get_start_date($event_id, true, 'F j, G:i');
-													$event_end_date = tribe_get_end_date($event_id, true, 'G:i');
-													// $event_start_date_german = explode(" ",$event_start_date);
-													// $event_start_date_german = change_date_to_german($event_start_date_german);
-													// $event_start_date_german = implode(" ",$event_start_date_german);
-													$event_location_address = tribe_get_full_address($event_single);
+									$event_id = $event_single->ID;
+									$event_title = $event_single->post_title;
+									$event_content = $event_single->post_content;
+									// $event_link = $event_single->guid;
+									$event_link = get_permalink($event_id);
+									$event_slug_post = get_post($event_id);
+									$event_slug = $event_slug_post->post_name;
+									$event_start_date = tribe_get_start_date($event_id, true, 'F j, G:i');
+									$event_end_date = tribe_get_end_date($event_id, true, 'G:i');
+									// $event_start_date_german = explode(" ",$event_start_date);
+									// $event_start_date_german = change_date_to_german($event_start_date_german);
+									// $event_start_date_german = implode(" ",$event_start_date_german);
+									$event_location_address = tribe_get_full_address($event_single);
 
-													$event_venue_id = get_post_meta($event_id, '_EventVenueID', true);
-													$event_venue_address = get_post_meta($event_venue_id, '_VenueAddress', true);
-													$event_venue_city = get_post_meta($event_venue_id, '_VenueCity', true);
-													$event_venue_country = get_post_meta($event_venue_id, '_VenueCountry', true);
-													$event_venue_province = get_post_meta($event_venue_id, '_VenueProvince', true);
-
-
-													$event_cost = get_post_meta($event_id, '_EventCost', true);
-
-													$dasgongbad_external_tickets_url = get_post_meta($event_id, 'dasgongbad_external_tickets', true);
-
-													$external_event_ticekts_options = get_post_meta($event_id, 'enable_external_tickets', true);
-													$dasgongbad_external_tickets_price = get_post_meta($event_id, 'dasgongbad_external_tickets_price', true);
+									$event_venue_id = get_post_meta($event_id, '_EventVenueID', true);
+									$event_venue_address = get_post_meta($event_venue_id, '_VenueAddress', true);
+									$event_venue_city = get_post_meta($event_venue_id, '_VenueCity', true);
+									$event_venue_country = get_post_meta($event_venue_id, '_VenueCountry', true);
+									$event_venue_province = get_post_meta($event_venue_id, '_VenueProvince', true);
 
 
+									$event_cost = get_post_meta($event_id, '_EventCost', true);
 
-													$tickets = Tribe__Tickets__Tickets::get_all_event_tickets($event_id);
-													$product_id = $tickets[0]->ID;
-													$ticket_stock = get_post_meta($product_id, '_stock', true);
+									$dasgongbad_external_tickets_url = get_post_meta($event_id, 'dasgongbad_external_tickets', true);
+
+									$external_event_ticekts_options = get_post_meta($event_id, 'enable_external_tickets', true);
+									$dasgongbad_external_tickets_price = get_post_meta($event_id, 'dasgongbad_external_tickets_price', true);
 
 
 
-													$event_image = get_the_post_thumbnail_url($event_id);
-													$get_new_date = str_replace(' ', '-', $event_start_date);
-													$newstr_date = explode(',', $get_new_date);
-													$newstr_date = $newstr_date[0];
+									$tickets = Tribe__Tickets__Tickets::get_all_event_tickets($event_id);
+									$product_id = $tickets[0]->ID;
+									$ticket_stock = get_post_meta($product_id, '_stock', true);
 
 
-												?>
+
+									$event_image = get_the_post_thumbnail_url($event_id);
+									$get_new_date = str_replace(' ', '-', $event_start_date);
+									$newstr_date = explode(',', $get_new_date);
+									$newstr_date = $newstr_date[0];
+
+
+								?>
 					<div class="event-item" id="<?php echo esc_attr($newstr_date); ?>">
 						<div class="event-top" id="<?php echo $event_slug;  ?>">
 
@@ -481,10 +487,10 @@ function upcoming_events_functions($atts)
 
 							<?php if (!empty($event_start_date)) : ?>
 								<h3 class="event-date">
-								<?php echo esc_html($event_start_date); ?>
-								<?php if (!empty($event_end_date)) : ?>
-									- <?php echo esc_html($event_end_date); ?>
-								<?php endif; ?>
+									<?php echo esc_html($event_start_date); ?>
+									<?php if (!empty($event_end_date)) : ?>
+										- <?php echo esc_html($event_end_date); ?>
+									<?php endif; ?>
 								</h3>
 							<?php endif; ?>
 
@@ -521,7 +527,7 @@ function upcoming_events_functions($atts)
 									</p>
 								</div>
 							<?php
-													} ?>
+									} ?>
 							<div class="event-right">
 								<?php //tribe_events_get_ticket_event($event_id); 
 								?>
@@ -627,8 +633,8 @@ function upcoming_events_functions($atts)
 					</div>
 
 				<?php
-													wp_reset_postdata();
-												}
+									wp_reset_postdata();
+								}
 
 				?>
 			</div>
@@ -970,7 +976,7 @@ if (!function_exists('dasgong_gift_shortcode_function')) {
 						<!-- <div class="quantity">
 							
 							<input type="number" id="quantity_613ef7603476b" class="input-text qty text" step="1" min="0" max="" name="quantity" value="1" title="Menge" size="4" placeholder="" inputmode="numeric">  <?php //echo pll_e('Number of sessions');
-																																																																																																					?>
+																																																						?>
 						</div> -->
 
 						<h3>Delivery info</h3>
@@ -1191,3 +1197,209 @@ function exclude_posts_by_titles($where, $query)
 add_filter('posts_where', 'exclude_posts_by_titles', 10, 2);
 
 # END WP CORE SECURE
+
+
+// sunder code starts
+
+add_shortcode("dasgongbad_fixed_price_gift_card", "dasgongbad_fixed_price_gift_cart_callback");
+
+function dasgongbad_fixed_price_gift_cart_callback($atts)
+{
+	ob_start();
+	$product_ids = $atts['product_ids'];
+	$product_ids = explode(',', $product_ids);
+
+	// Handle form submission
+	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dasgongbad_fixed_price_gift_card'])) {
+		$selected_product_id = intval($_POST['dasgongbad_fixed_price_gift_card']);
+		$current_url = $_SERVER['REQUEST_URI'];
+		if (strpos($current_url, '/en/') !== false) {
+			$cart_url = wc_get_cart_url() . '?add-to-cart=' . $selected_product_id;
+		} else {
+			$cart_url = home_url('/cart-de/') . '?add-to-cart=' . $selected_product_id;
+		}
+		wp_redirect($cart_url);
+		exit;
+	}
+?>
+	<div>
+		<form method="post" id="dasgongbad_fixed_price_gift_card_form">
+			<select id="dasgongbad_fixed_price_gift_card" name="dasgongbad_fixed_price_gift_card">
+				<?php
+				foreach ($product_ids as $product_id) {
+					$product = wc_get_product($product_id);
+					if (is_object($product)) {
+				?>
+						<option value="<?php echo esc_attr($product_id); ?>"><?php echo wc_price($product->get_price()); ?></option>
+				<?php
+					}
+				}
+				?>
+			</select>
+
+			<input type="submit" value="Buy Now">
+		</form>
+	</div>
+
+<?php
+	return ob_get_clean();
+}
+
+
+
+// custom values starts
+// AJAX: Add gift card with custom price
+add_action('wp_ajax_add_custom_gift_card', 'add_custom_gift_card_to_cart');
+add_action('wp_ajax_nopriv_add_custom_gift_card', 'add_custom_gift_card_to_cart');
+
+function add_custom_gift_card_to_cart()
+{
+	$product_id   = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
+	$custom_amount = isset($_POST['custom_price']) ? floatval($_POST['custom_price']) : 0;
+
+
+
+	if ($product_id <= 0 || $custom_amount <= 0) {
+		wp_send_json_error(['message' => 'Invalid data provided.']);
+		wp_die();
+	}
+
+	// Smart Coupons expects 'credit_amount' in cart item data
+	$cart_item_data = [
+		'credit_amount' => wc_format_decimal($custom_amount),
+	];
+
+	$cart_item_key = WC()->cart->add_to_cart($product_id, 1, 0, [], $cart_item_data);
+
+	if ($cart_item_key) {
+		// Store custom price in session
+		WC()->session->set('gift_card_price_' . $cart_item_key, $custom_amount);
+
+		$cart_url = (strpos($_SERVER['REQUEST_URI'], '/en/') !== false)
+			? wc_get_cart_url()
+			: home_url('/cart-de/');
+		wp_send_json_success(['redirect' => $cart_url]);
+	} else {
+		wp_send_json_error(['message' => 'Failed to add Smart Coupon to cart']);
+	}
+	wp_die();
+}
+
+// Apply custom price before totals
+add_action('woocommerce_before_calculate_totals', function ($cart) {
+	if (is_admin() && !defined('DOING_AJAX')) return;
+
+	foreach ($cart->get_cart() as $cart_item_key => $cart_item) {
+		$custom_price = WC()->session->get('gift_card_price_' . $cart_item_key);
+		if (!empty($custom_price)) {
+			$cart_item['data']->set_price((float) $custom_price);
+		}
+	}
+});
+
+add_shortcode('dasgongbad_custom_price_gift_card', function ($atts) {
+	$atts = shortcode_atts(['product_id' => 0], $atts);
+	ob_start();
+?>
+	<div class="custom-price-gift-card">
+		<input type="hidden" id="gift_product_id" value="<?php echo esc_attr($atts['product_id']); ?>">
+		<div class="form-row">
+			<label for="gift_card_price"><?php esc_html_e('Purchase credit worth (CHF)', 'das-gongbad'); ?></label>
+			<input type="number" step="0.01" id="gift_card_price" required class="wc-price-input">
+		</div>
+		<div class="form-row">
+			<button id="gift_card_submit" class="button alt"><?php esc_html_e('Buy Now', 'das-gongbad'); ?></button>
+		</div>
+	</div>
+<?php
+	return ob_get_clean();
+});
+
+
+
+
+
+add_shortcode('dasgongbad_custom_and_fixed_price_gift_card', function ($atts) {
+	$atts = shortcode_atts([
+		'product_ids' => '',
+		'product_id'  => 0
+	], $atts);
+
+	$product_ids = array_filter(array_map('trim', explode(',', $atts['product_ids'])));
+
+	ob_start();
+	// Handle form submission
+	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dasgongbad_fixed_price_gift_card'])) {
+		$selected_product_id = intval($_POST['dasgongbad_fixed_price_gift_card']);
+		$current_url = $_SERVER['REQUEST_URI'];
+		if (strpos($current_url, '/en/') !== false) {
+			$cart_url = wc_get_cart_url() . '?add-to-cart=' . $selected_product_id;
+		} else {
+			$cart_url = home_url('/cart-de/') . '?add-to-cart=' . $selected_product_id;
+		}
+		wp_redirect($cart_url);
+		exit;
+	}
+?>
+	<div class="combined-gift-card">
+		<form method="post" id="dasgongbad_fixed_price_gift_card_form">
+			<label for="dasgongbad_fixed_price_gift_card"><?php esc_html_e('Choose a Gift Card Value:', 'das-gongbad'); ?></label>
+			<select id="dasgongbad_fixed_price_gift_card" name="dasgongbad_fixed_price_gift_card">
+				<?php
+				foreach ($product_ids as $product_id) {
+					$product = wc_get_product($product_id);
+					if (is_object($product)) {
+						echo '<option value="' . esc_attr($product_id) . '">' . wc_price($product->get_price()) . '</option>';
+					}
+				}
+				?>
+				<option value="custom"><?php esc_html_e('Custom Amount', 'das-gongbad'); ?></option>
+			</select>
+
+			<!-- Fixed button -->
+			<div id="fixed-submit-wrapper">
+				<input type="submit" value="<?php esc_attr_e('Buy Gift Card', 'das-gongbad'); ?>" class="button alt">
+			</div>
+		</form>
+
+		<!-- Custom amount form -->
+		<div id="custom-price-wrapper" style="display:none;">
+			<input type="hidden" id="gift_product_id" value="<?php echo esc_attr($atts['product_id']); ?>">
+			<div class="form-row">
+				<label for="gift_card_price"><?php esc_html_e('Enter custom amount (CHF):', 'das-gongbad'); ?></label>
+				<input type="number" step="0.01" id="gift_card_price" required class="wc-price-input">
+			</div>
+			<div class="form-row">
+				<button id="gift_card_submit" class="button alt"><?php esc_html_e('Buy Custom Gift Card', 'das-gongbad'); ?></button>
+			</div>
+		</div>
+	</div>
+
+<?php
+	return ob_get_clean();
+});
+
+
+// sunder code ends
+/**
+ * Add custom content inside the ticket template.
+ *
+ * @param string $template_html The HTML content of the tickets template.
+ * @return string The modified HTML content.
+ */
+function add_custom_content_to_ticket_template($template_html)
+{
+	// This is the custom content you want to add.
+	$custom_content = '<p class="tickets-subtitle">This is a subtitle or custom content you want to display below the main Tickets heading.</p>';
+
+	// Look for the "Tickets" heading to insert our content after it.
+	// The heading typically has a class like 'tribe-tickets-list-title'.
+	$search_string = '<h2 class="tribe-tickets__list-title">';
+	$replace_string = $search_string . $custom_content;
+
+	// Replace the heading with the heading plus our custom content.
+	$modified_html = str_replace($search_string, $replace_string, $template_html);
+
+	return $modified_html;
+}
+add_filter('tribe_events_tickets_template', 'add_custom_content_to_ticket_template');
